@@ -590,6 +590,10 @@ video {
   align-items: center;
 }
 
+.gap-4 {
+  gap: 1rem;
+}
+
 .rounded {
   border-radius: 0.25rem;
 }
@@ -643,6 +647,11 @@ video {
 .text-blue-700 {
   --tw-text-opacity: 1;
   color: rgb(29 78 216 / var(--tw-text-opacity));
+}
+
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
 .transition {
