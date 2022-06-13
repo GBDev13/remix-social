@@ -2,7 +2,6 @@ import type { ActionFunction, LoaderFunction} from "@remix-run/node";
 import { redirect } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useActionData, useLoaderData } from "@remix-run/react";
-import type { Post } from "~/services/posts.server";
 import { createPost } from "~/services/posts.server";
 import { Post as PostComponent } from '~/components/Post';
 import { getPosts  } from '~/services/posts.server';
@@ -10,7 +9,7 @@ import { PostForm } from "~/components/PostForm";
 import { CreatePost } from "~/services/validations";
 
 type LoaderData = {
-  posts: Post[];
+  posts: Awaited<ReturnType<typeof getPosts>>
 }
 
 type ActionData = {
@@ -43,7 +42,7 @@ export const action: ActionFunction = async ({ request }) => {
     }, { status: 400 })
   }
 
-  await createPost({ title: result.data.title ?? null, body: result.data.body });
+  await createPost({ title: result.data.title ?? null, body: result.data.body, authorId: "bad-id" });
 
   return redirect("/")
 }
@@ -68,7 +67,7 @@ export default function Index() {
       <ul>
         {posts.map(post => (
           <li key={post.title}>
-            <PostComponent header={post.title}>
+            <PostComponent header={post.title} authorName={post?.author?.email}>
               {post.body}
             </PostComponent>
           </li>
