@@ -588,7 +588,7 @@
   dependencies:
     json-parse-even-better-errors "^2.3.1"
 
-"@prisma/client@3.15.1":
+"@prisma/client@^3.15.1":
   version "3.15.1"
   resolved "https://registry.yarnpkg.com/@prisma/client/-/client-3.15.1.tgz#798e8bf0370abe686d599c822e93f7adb7c0c9c0"
   integrity sha512-Lsk7oupvO9g99mrIs07iE6BIMouHs46Yq/YY8itTsUQNKfecsPuZvVYvcKci0pqRQ0neOpvIvoA/ouZmIMBCrQ==
