@@ -1,7 +1,8 @@
 import type { LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import type { Post  } from '~/services/posts.server';
+import type { Post } from "~/services/posts.server";
+import { Post as PostComponent } from '~/components/Post';
 import { getPosts  } from '~/services/posts.server';
 
 type LoaderData = {
@@ -22,10 +23,9 @@ export default function Index() {
       <ul>
         {posts.map(post => (
           <li key={post.title}>
-            <div>
-              <h2>{post.title}</h2>
-              <p>{post.body}</p>
-            </div>
+            <PostComponent header={post.title}>
+              {post.body}
+            </PostComponent>
           </li>
         ))}
       </ul>
